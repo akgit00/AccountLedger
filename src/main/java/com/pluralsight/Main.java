@@ -19,7 +19,6 @@ public class Main {
 
             String choice = scanner.nextLine().trim().toUpperCase();
 
-
         }
     }
 }
