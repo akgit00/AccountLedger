@@ -18,7 +18,25 @@ public class Main {
             System.out.print("Choose an option: ");
 
             String choice = scanner.nextLine().trim().toUpperCase();
-
+            switch (choice) {
+                case "D":
+                    System.out.println("Deposit option selected");
+                    break;
+                case "P":
+                    System.out.println("Payment option selected");
+                    break;
+                case "L":
+                    Ledger.showLedgerMenu(scanner);
+                    break;
+                case "X":
+                    running = false;
+                    System.out.println("Exiting program. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
         }
+
+        scanner.close();
     }
 }
