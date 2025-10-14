@@ -46,6 +46,19 @@ public class Ledger {
     private static void displayTransactions(String type) {
         List<Transaction> transactions = TransactionManager.loadTransactions();
 
+        // Sort newest first
+        transactions.sort(Comparator.comparing(Transaction::getDate)
+                .thenComparing(Transaction::getTime)
+                .reversed());
 
+        System.out.println("\nDate       | Time     | Description          | Vendor           | Amount");
+        System.out.println("--------------------------------------------------------------------------");
+
+        for (Transaction t : transactions) {
+            if (type.equals("DEPOSIT") && t.getAmount() < 0) continue;
+            if (type.equals("PAYMENT") && t.getAmount() >= 0) continue;
+            System.out.println(t);
+
+        }
     }
 }
