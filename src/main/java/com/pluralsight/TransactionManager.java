@@ -25,11 +25,32 @@ public class TransactionManager {
         }
     }
 
-        //This will be finished later to handle reading and writing to the CSV file
-        public static List<Transaction> loadTransactions () {
-            List<Transaction> transactions = new ArrayList<>();
+    //This will be finished later to handle reading and writing to the CSV file
+    public static List<Transaction> loadTransactions() {
+        List<Transaction> transactions = new ArrayList<>();
 
-            File file = new File(FILE_PATH);
+        File file = new File(FILE_PATH);
+        if (!file.exists()) {
+            return transactions; // Return empty list if file doesn't exist yet
         }
 
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length != 5) continue;
+
+                LocalDate date = LocalDate.parse(parts[0]);
+                LocalTime time = LocalTime.parse(parts[1]);
+                String description = parts[2];
+                String vendor = parts[3];
+                double amount = Double.parseDouble(parts[4]);
+
+                Transaction transaction = new Transaction(date, time, description, vendor, amount);
+                transactions.add(transaction);
+            }
+
+        }
+        return transactions;
     }
+}
