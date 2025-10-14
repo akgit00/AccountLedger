@@ -72,4 +72,13 @@ public class Reports {
         //displayResults will go here
     }
 
+    private static void showYearToDate() {
+        List<Transaction> all = TransactionManager.loadTransactions();
+        int currentYear = LocalDate.now().getYear();
+        List<Transaction> filtered = all.stream()
+                .filter(t -> t.getDate().getYear() == currentYear)
+                .collect(Collectors.toList());
+        //displayResults will go here
+    }
+
 }
