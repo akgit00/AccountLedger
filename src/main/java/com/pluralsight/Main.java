@@ -20,10 +20,10 @@ public class Main {
             String choice = scanner.nextLine().trim().toUpperCase();
             switch (choice) {
                 case "D":
-                    System.out.println("Deposit option selected");//placeholder
+                    addTransaction(scanner, true);
                     break;
                 case "P":
-                    System.out.println("Payment option selected");//placeholder
+                    addTransaction(scanner, false);
                     break;
                 case "L":
                     Ledger.showLedgerMenu(scanner);
@@ -54,6 +54,11 @@ public class Main {
         } catch (NumberFormatException e) {
             System.out.println("Invalid amount entered. Transaction canceled.");
             return;
+        }
+
+        //Making payments negative
+        if (!isDeposit) {
+            amount = -Math.abs(amount);
         }
 
     }
