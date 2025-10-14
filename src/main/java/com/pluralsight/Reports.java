@@ -1,6 +1,9 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Reports {
     public static void showReportsMenu(Scanner scanner) {
@@ -44,4 +47,18 @@ public class Reports {
             }
         }
     }
+
+
+    //this section is for adding methods that will display different report types
+    private static void showMonthToDate() {
+        List<Transaction> all = TransactionManager.loadTransactions();
+        LocalDate now = LocalDate.now();
+        List<Transaction> filtered = all.stream()
+                .filter(t -> t.getDate().getYear() == now.getYear()
+                        && t.getDate().getMonth() == now.getMonth())
+                .collect(Collectors.toList());
+    }
+
+
+
 }
