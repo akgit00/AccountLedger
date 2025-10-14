@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -57,8 +58,18 @@ public class Reports {
                 .filter(t -> t.getDate().getYear() == now.getYear()
                         && t.getDate().getMonth() == now.getMonth())
                 .collect(Collectors.toList());
+        //displayResults will go here
     }
 
+    private static void showPreviousMonth() {
+        List<Transaction> all = TransactionManager.loadTransactions();
+        LocalDate now = LocalDate.now();
+        YearMonth lastMonth = YearMonth.from(now).minusMonths(1);
 
+        List<Transaction> filtered = all.stream()
+                .filter(t -> YearMonth.from(t.getDate()).equals(lastMonth))
+                .collect(Collectors.toList());
+        //displayResults will go here
+    }
 
 }
