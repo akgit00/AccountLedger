@@ -11,6 +11,8 @@ public class TransactionManager {
     public static List<Transaction> loadTransactions(){
         return new ArrayList<>(); //This will act as a placeholder for now while everything else gets set up
     }
-
+    public static void saveTransaction(Transaction transaction) {
+        // Placeholder for saving to CSV
+    }
 
 }
