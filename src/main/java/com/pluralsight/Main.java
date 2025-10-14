@@ -44,5 +44,17 @@ public class Main {
         System.out.print("Enter description: ");
         String description = scanner.nextLine();
 
+        System.out.print("Enter vendor: ");
+        String vendor = scanner.nextLine();
+
+        System.out.print("Enter amount: ");
+        double amount = 0;
+        try {
+            amount = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid amount entered. Transaction canceled.");
+            return;
+        }
+
     }
 }
