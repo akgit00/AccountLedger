@@ -39,4 +39,10 @@ public class Main {
 
         scanner.close();
     }
+
+    private static void addTransaction(Scanner scanner, boolean isDeposit) {
+        System.out.print("Enter description: ");
+        String description = scanner.nextLine();
+
+    }
 }
