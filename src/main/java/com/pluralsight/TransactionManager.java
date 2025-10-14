@@ -49,7 +49,8 @@ public class TransactionManager {
                 Transaction transaction = new Transaction(date, time, description, vendor, amount);
                 transactions.add(transaction);
             }
-
+        } catch (IOException e) {
+            System.out.println("Error reading transactions: " + e.getMessage());
         }
         return transactions;
     }
