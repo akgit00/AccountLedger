@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -60,6 +62,16 @@ public class Main {
         if (!isDeposit) {
             amount = -Math.abs(amount);
         }
+        Transaction transaction = new Transaction(
+                LocalDate.now(),
+                LocalTime.now(),
+                description,
+                vendor,
+                amount
+        );
+
+        TransactionManager.saveTransaction(transaction);
+        System.out.println("Transaction saved successfully! ✅");
 
     }
 }
