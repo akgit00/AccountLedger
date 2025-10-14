@@ -20,10 +20,10 @@ public class Main {
             String choice = scanner.nextLine().trim().toUpperCase();
             switch (choice) {
                 case "D":
-                    System.out.println("Deposit option selected");
+                    System.out.println("Deposit option selected");//placeholder
                     break;
                 case "P":
-                    System.out.println("Payment option selected");
+                    System.out.println("Payment option selected");//placeholder
                     break;
                 case "L":
                     Ledger.showLedgerMenu(scanner);
