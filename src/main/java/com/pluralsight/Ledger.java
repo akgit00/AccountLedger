@@ -1,6 +1,9 @@
 package com.pluralsight;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Ledger {
 
@@ -38,5 +41,11 @@ public class Ledger {
                     System.out.println("Invalid option. Try again.");
             }
         }
+    }
+
+    private static void displayTransactions(String type) {
+        List<Transaction> transactions = TransactionManager.loadTransactions();
+
+
     }
 }
