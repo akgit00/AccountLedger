@@ -84,7 +84,15 @@ public class Reports {
     private static void showPreviousYear() {
         List<Transaction> all = TransactionManager.loadTransactions();
         int lastYear = LocalDate.now().getYear() - 1;
-        //List<Transaction> filtered = all.stream()
+        List<Transaction> filtered = all.stream()
+                .filter(t -> t.getDate().getYear() == lastYear)
+                .collect(Collectors.toList());
+        //displayResults will go here
+    }
+
+    private static void searchByVendor(Scanner scanner) {
+        System.out.print("Enter vendor name to search: ");
+        String vendor = scanner.nextLine().trim().toLowerCase();
 
 
     }
