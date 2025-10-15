@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -54,10 +55,13 @@ public class Reports {
     private static void showMonthToDate() {
         List<Transaction> all = TransactionManager.loadTransactions();
         LocalDate now = LocalDate.now();
-        List<Transaction> filtered = all.stream()
-                .filter(t -> t.getDate().getYear() == now.getYear()
-                        && t.getDate().getMonth() == now.getMonth())
-                .collect(Collectors.toList());
+        List<Transaction> filtered = new ArrayList<>();
+        for (Transaction t : all) {
+            if (t.getDate().getYear() == now.getYear()
+                    && t.getDate().getMonth() == now.getMonth()) {
+                filtered.add(t);
+            }
+        }
         //displayResults will go here
     }
 
@@ -66,9 +70,12 @@ public class Reports {
         LocalDate now = LocalDate.now();
         YearMonth lastMonth = YearMonth.from(now).minusMonths(1);
 
-        List<Transaction> filtered = all.stream()
-                .filter(t -> YearMonth.from(t.getDate()).equals(lastMonth))
-                .collect(Collectors.toList());
+        List<Transaction> filtered = new ArrayList<>();
+        for (Transaction t : all) {
+            if (YearMonth.from(t.getDate()).equals(lastMonth)) {
+                filtered.add(t);
+            }
+        }
         //displayResults will go here
     }
 
@@ -84,16 +91,26 @@ public class Reports {
     private static void showPreviousYear() {
         List<Transaction> all = TransactionManager.loadTransactions();
         int lastYear = LocalDate.now().getYear() - 1;
-        List<Transaction> filtered = all.stream()
-                .filter(t -> t.getDate().getYear() == lastYear)
-                .collect(Collectors.toList());
+        List<Transaction> filtered = new ArrayList<>();
+        for (Transaction t : all) {
+            if (t.getDate().getYear() == lastYear) {
+                filtered.add(t);
+            }
+        }
         //displayResults will go here
     }
 
     private static void searchByVendor(Scanner scanner) {
         System.out.print("Enter vendor name to search: ");
         String vendor = scanner.nextLine().trim().toLowerCase();
-
+        List<Transaction> all = TransactionManager.loadTransactions();
+        List<Transaction> filtered = new ArrayList<>();
+        for (Transaction t : all) {
+            if (t.getVendor().toLowerCase().contains(vendor)) {
+                filtered.add(t);
+            }
+        }
+        //displayResults will go here
 
     }
 }
