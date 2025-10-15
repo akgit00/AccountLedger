@@ -118,10 +118,25 @@ public class Reports {
     // This section is for a custom searching feature
 
 
-    /*1. use the scanner to ask the user for their custom search through a date format (start date and end date),
-    a description, the vendor, or the amount (exact amount)
+    private static void customSearch(Scanner scanner) {
+        System.out.println("\n--- Custom Search ---");
+        System.out.print("Start Date (YYYY-MM-DD or blank): ");
+        String startInput = scanner.nextLine().trim();
 
-    2. use for loops to filter through transactions
+        System.out.print("End Date (YYYY-MM-DD or blank): ");
+        String endInput = scanner.nextLine().trim();
 
-     */
+        System.out.print("Description (or blank): ");
+        String descInput = scanner.nextLine().trim().toLowerCase();
+
+        System.out.print("Vendor (or blank): ");
+        String vendorInput = scanner.nextLine().trim().toLowerCase();
+
+        System.out.print("Amount (exact match or blank): ");
+        String amountInput = scanner.nextLine().trim();
+
+        /*2. use for loops to filter through transactions
+
+         */
+    }
 }
