@@ -3,8 +3,10 @@ package com.pluralsight;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
 public class Reports {
     public static void showReportsMenu(Scanner scanner) {
@@ -158,16 +160,19 @@ public class Reports {
         }
         }
 
+    //This section is for displaying results//
     private static void displayResults (List < Transaction > transactions, String title){
         System.out.println("\n========== " + title + " ==========");
         if (transactions.isEmpty()) {
             System.out.println("No matching transactions found.");
             return;
+        }
+        transactions.sort(Comparator.comparing(Transaction::getDate).reversed());
 
-            //This section is for displaying results//
-       /* 2. Use Comparator.comparing to sort the dates from newest to oldest
+
+            /*
         3. Print the results in the correct format
          */
-        }
+
     }
 }
