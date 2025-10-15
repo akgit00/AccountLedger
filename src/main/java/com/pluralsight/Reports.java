@@ -135,8 +135,24 @@ public class Reports {
         System.out.print("Amount (exact match or blank): ");
         String amountInput = scanner.nextLine().trim();
 
-        /*2. use for loops to filter through transactions
+        List<Transaction> all = TransactionManager.loadTransactions();
+        List<Transaction> filtered = new ArrayList<>();
 
-         */
+        for (Transaction t : all) {
+            LocalDate date = t.getDate();
+            String description = t.getDescription().toLowerCase();
+            String vendor = t.getVendor().toLowerCase();
+            String amount = Double.toString(t.getAmount());
+
+            // This is to skip the transactions that don't match the filters
+            if (!startInput.isEmpty() && date.isBefore(LocalDate.parse(startInput))) continue;
+            if (!endInput.isEmpty() && date.isAfter(LocalDate.parse(endInput))) continue;
+            if (!descInput.isEmpty() && !description.contains(descInput)) continue;
+            if (!vendorInput.isEmpty() && !vendor.contains(vendorInput)) continue;
+            if (!amountInput.isEmpty() && !amount.equals(amountInput)) continue;
+
+            // Only if all conditions did pass then add it to the filtered list
+            filtered.add(t);
+        }
     }
 }
