@@ -81,4 +81,11 @@ public class Reports {
         //displayResults will go here
     }
 
+    private static void showPreviousYear() {
+        List<Transaction> all = TransactionManager.loadTransactions();
+        int lastYear = LocalDate.now().getYear() - 1;
+        //List<Transaction> filtered = all.stream()
+
+
+    }
 }
