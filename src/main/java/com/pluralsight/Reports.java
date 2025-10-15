@@ -113,4 +113,15 @@ public class Reports {
         //displayResults will go here
 
     }
+
+
+    // This section is for a custom searching feature
+
+
+    /*1. use the scanner to ask the user for their custom search through a date format (start date and end date),
+    a description, the vendor, or the amount (exact amount)
+
+    2. use for loops to filter through transactions
+
+     */
 }
