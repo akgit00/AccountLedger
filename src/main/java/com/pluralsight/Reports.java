@@ -154,5 +154,14 @@ public class Reports {
             // Only if all conditions did pass then add it to the filtered list
             filtered.add(t);
         }
+
+        //This section is for displaying results//
+
+        /*
+        1. create displayResults method
+        2. Use Comparator.comparing to sort the dates from newest to oldest
+        3. Print the results in the correct format
+         */
+
     }
 }
