@@ -5,7 +5,6 @@ import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Reports {
     public static void showReportsMenu(Scanner scanner) {
@@ -82,9 +81,12 @@ public class Reports {
     private static void showYearToDate() {
         List<Transaction> all = TransactionManager.loadTransactions();
         int currentYear = LocalDate.now().getYear();
-        List<Transaction> filtered = all.stream()
-                .filter(t -> t.getDate().getYear() == currentYear)
-                .collect(Collectors.toList());
+        List<Transaction> filtered = new ArrayList<>();
+        for (Transaction t : all) {
+            if (t.getDate().getYear() == currentYear) {
+                filtered.add(t);
+            }
+        }
         //displayResults will go here
     }
 
@@ -154,14 +156,18 @@ public class Reports {
             // Only if all conditions did pass then add it to the filtered list
             filtered.add(t);
         }
+        }
 
-        //This section is for displaying results//
+    private static void displayResults (List < Transaction > transactions, String title){
+        System.out.println("\n========== " + title + " ==========");
+        if (transactions.isEmpty()) {
+            System.out.println("No matching transactions found.");
+            return;
 
-        /*
-        1. create displayResults method
-        2. Use Comparator.comparing to sort the dates from newest to oldest
+            //This section is for displaying results//
+       /* 2. Use Comparator.comparing to sort the dates from newest to oldest
         3. Print the results in the correct format
          */
-
+        }
     }
 }
