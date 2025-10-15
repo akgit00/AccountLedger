@@ -27,26 +27,25 @@ public class Reports {
 
             switch (choice) {
                 case "1":
-                    System.out.println("Month to Date report");
+                    showMonthToDate();
                     break;
                 case "2":
-                    System.out.println("Previous Month report");
+                    showPreviousMonth();
                     break;
                 case "3":
-                    System.out.println("Year to Date report");
+                    showYearToDate();
                     break;
                 case "4":
-                    System.out.println("Previous Year report");
+                    showPreviousYear();
                     break;
                 case "5":
-                    System.out.println("Search by Vendor");
+                    searchByVendor(scanner);
                     break;
                 case "0":
                     viewingReports = false;
                     break;
                 default:
                     System.out.println("Invalid choice. Try again.");
-
             }
         }
     }
@@ -63,7 +62,7 @@ public class Reports {
                 filtered.add(t);
             }
         }
-        //displayResults will go here
+        displayResults(filtered, "MONTH TO DATE");
     }
 
     private static void showPreviousMonth() {
@@ -77,7 +76,7 @@ public class Reports {
                 filtered.add(t);
             }
         }
-        //displayResults will go here
+        displayResults(filtered, "PREVIOUS MONTH");
     }
 
     private static void showYearToDate() {
@@ -89,7 +88,7 @@ public class Reports {
                 filtered.add(t);
             }
         }
-        //displayResults will go here
+        displayResults(filtered, "YEAR TO DATE");
     }
 
     private static void showPreviousYear() {
@@ -101,7 +100,7 @@ public class Reports {
                 filtered.add(t);
             }
         }
-        //displayResults will go here
+        displayResults(filtered, "PREVIOUS YEAR");
     }
 
     private static void searchByVendor(Scanner scanner) {
@@ -114,7 +113,7 @@ public class Reports {
                 filtered.add(t);
             }
         }
-        //displayResults will go here
+        displayResults(filtered, "VENDOR SEARCH: " + vendor);
 
     }
 
@@ -157,6 +156,8 @@ public class Reports {
 
             // Only if all conditions did pass then add it to the filtered list
             filtered.add(t);
+
+            displayResults(filtered, "CUSTOM SEARCH RESULTS");
         }
         }
 
@@ -169,10 +170,16 @@ public class Reports {
         }
         transactions.sort(Comparator.comparing(Transaction::getDate).reversed());
 
+        System.out.println("Date       | Time     | Description          | Vendor           | Amount");
+        System.out.println("--------------------------------------------------------------------------");
 
-            /*
-        3. Print the results in the correct format
-         */
+        for (Transaction t : transactions) {
+            System.out.println(t);
+        }
+
+        System.out.println("--------------------------------------------------------------------------");
+        double total = transactions.stream().mapToDouble(Transaction::getAmount).sum();
+        System.out.printf("Total: %.2f%n", total);
 
     }
 }

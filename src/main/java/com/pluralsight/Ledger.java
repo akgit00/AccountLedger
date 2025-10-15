@@ -60,5 +60,6 @@ public class Ledger {
             System.out.println(t);
 
         }
+        System.out.println("--------------------------------------------------------------------------");
     }
 }
