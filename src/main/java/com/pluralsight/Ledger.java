@@ -23,13 +23,13 @@ public class Ledger {
 
             switch (choice) {
                 case "A":
-                    System.out.println("Display all entries");
+                    displayTransactions("ALL");
                     break;
                 case "D":
-                    System.out.println("Display deposits");
+                    displayTransactions("DEPOSIT");
                     break;
                 case "P":
-                    System.out.println("Display payments");
+                    displayTransactions("PAYMENT");
                     break;
                 case "R":
                     Reports.showReportsMenu(scanner);
