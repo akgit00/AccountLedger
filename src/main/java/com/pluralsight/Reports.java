@@ -177,11 +177,16 @@ public class Reports {
         }
         transactions.sort(Comparator.comparing(Transaction::getDate).reversed());
 
-        System.out.println("Date       | Time     | Description          | Vendor           | Amount");
-        System.out.println("--------------------------------------------------------------------------");
+        System.out.println(YELLOW + "Date       | Time     | Description          | Vendor           | Amount" + RESET);
+        System.out.println(YELLOW + "--------------------------------------------------------------------------" + RESET);
 
         for (Transaction t : transactions) {
-            System.out.println(t);
+            String amountColor;
+            if (t.getAmount() >= 0) amountColor = GREEN;
+            else amountColor = RED;
+            System.out.println(
+                    String.format("%s", amountColor) + t + RESET
+            );
         }
 
         System.out.println("--------------------------------------------------------------------------");
