@@ -1,13 +1,24 @@
 package com.pluralsight;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
+
+    private static void showSplashScreen() {
+        System.out.println(Utils.BLUE +
+                "\n==================================================");
+        System.out.println("        💎 WELCOME TO THE LEDGER APP 💎");
+        System.out.println("==================================================");
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
+        showSplashScreen();
 
         while (running) {
             System.out.println("\n==============================");
