@@ -54,6 +54,16 @@ public class Ledger {
         System.out.println("\nDate       | Time     | Description          | Vendor           | Amount");
         System.out.println("--------------------------------------------------------------------------");
 
+        /*
+        1. setup variables for the count, expenses and income
+        2. Loop through each transaction
+        3. Filter through the transaction types
+        4. Print the transaction details
+        5. Use an if else statement to determine whether a transaction should be put to expenses or income
+        6. Print a statement if there was no transaction found
+        7. Print the total with correct color coordination
+         */
+
         for (Transaction t : transactions) {
             if (type.equals("DEPOSIT") && t.getAmount() < 0) continue;
             if (type.equals("PAYMENT") && t.getAmount() >= 0) continue;
