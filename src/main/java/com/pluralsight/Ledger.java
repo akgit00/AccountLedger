@@ -54,8 +54,12 @@ public class Ledger {
         System.out.println("\nDate       | Time     | Description          | Vendor           | Amount");
         System.out.println("--------------------------------------------------------------------------");
 
+        //1. setup variables for the count, expenses and income
+        int count = 0;
+        double income = 0;
+        double expenses = 0;
+
         /*
-        1. setup variables for the count, expenses and income
         2. Loop through each transaction
         3. Filter through the transaction types
         4. Print the transaction details
