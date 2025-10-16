@@ -14,7 +14,7 @@ public class Main {
         System.out.println("        💎 WELCOME TO THE LEDGER APP 💎");
         System.out.println("==================================================");
         System.out.println(Utils.YELLOW +
-                "Track deposits, payments, and generate reports.");
+                "Track deposits, payments, and generates reports.");
         System.out.println("Developed By: Ahmad Kourouma");
         System.out.println("Current Time: " +
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy hh:mm a")));
