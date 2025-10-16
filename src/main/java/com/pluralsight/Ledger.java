@@ -59,19 +59,33 @@ public class Ledger {
         double income = 0;
         double expenses = 0;
 
+        //2. Loop through each transaction
+        for (Transaction t : transactions) {
+
+            //3. Filter through the transaction types
+            if (type.equals("DEPOSIT") && t.getAmount() < 0) continue;
+            if (type.equals("PAYMENT") && t.getAmount() >= 0) continue;
+
+
+            //4. Print the transaction details
+            System.out.printf("%s | %s | %-20s | %-15s | %s%n",
+                    t.getDate(),
+                    t.getTime().withNano(0),
+                    t.getDescription(),
+                    t.getVendor(),
+                    Utils.colorAmount(t.getAmount()));
+
+            //5. Use an if else statement to determine whether a transaction should be put to expenses or income
+            if (t.getAmount() >= 0)
+                income += t.getAmount();
+            else
+                expenses += t.getAmount();
+            count++;
+
         /*
-        2. Loop through each transaction
-        3. Filter through the transaction types
-        4. Print the transaction details
-        5. Use an if else statement to determine whether a transaction should be put to expenses or income
         6. Print a statement if there was no transaction found
         7. Print the total with correct color coordination
          */
-
-        for (Transaction t : transactions) {
-            if (type.equals("DEPOSIT") && t.getAmount() < 0) continue;
-            if (type.equals("PAYMENT") && t.getAmount() >= 0) continue;
-            System.out.println(t);
 
         }
         System.out.println("--------------------------------------------------------------------------");
