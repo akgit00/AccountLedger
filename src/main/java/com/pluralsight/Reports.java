@@ -189,9 +189,15 @@ public class Reports {
             );
         }
 
-        System.out.println("--------------------------------------------------------------------------");
-        double total = transactions.stream().mapToDouble(Transaction::getAmount).sum();
+        System.out.println(YELLOW + "--------------------------------------------------------------------------" + RESET);
+        double total = 0.0;
+        for (Transaction transaction : transactions) {
+            double amount = transaction.getAmount();
+            total += amount;
+        }
         System.out.printf("Total: %.2f%n", total);
+        String totalColor = total >= 0 ? GREEN : RED;
+        System.out.printf(YELLOW + "Total: " + totalColor + "%.2f" + RESET + "%n", total);
 
     }
 }
