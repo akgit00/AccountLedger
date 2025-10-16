@@ -82,12 +82,21 @@ public class Ledger {
                 expenses += t.getAmount();
             count++;
 
-        /*
-        6. Print a statement if there was no transaction found
-        7. Print the total with correct color coordination
-         */
+
+            //6. Print a statement if there was no transaction found
+            if (count == 0) {
+                System.out.println("No transactions found for this filter.");
+                return;
+            }
+
 
         }
+        //7. Print the total with correct color coordination
         System.out.println("--------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
+        double net = income + expenses;
+        System.out.printf("Total Deposits: %s%.2f%s%n", Utils.GREEN, income, Utils.RESET);
+        System.out.printf("Total Payments: %s%.2f%s%n", Utils.RED, expenses, Utils.RESET);
+        System.out.printf("Net Balance:    %s%.2f%s%n", (net >= 0 ? Utils.GREEN : Utils.RED), net, Utils.RESET);
     }
 }
