@@ -9,6 +9,13 @@ import java.util.Scanner;
 import java.util.Collections;
 
 public class Reports {
+
+    public static final String RESET = "\u001B[0m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String YELLOW = "\u001B[33m";
+
     public static void showReportsMenu(Scanner scanner) {
         boolean viewingReports = true;
 
@@ -163,9 +170,9 @@ public class Reports {
 
     //This section is for displaying results//
     private static void displayResults (List < Transaction > transactions, String title){
-        System.out.println("\n========== " + title + " ==========");
+        System.out.println(BLUE + "\n========== " + title + " ==========" + RESET);
         if (transactions.isEmpty()) {
-            System.out.println("No matching transactions found.");
+            System.out.println(RED + "No matching transactions found." + RESET);
             return;
         }
         transactions.sort(Comparator.comparing(Transaction::getDate).reversed());
