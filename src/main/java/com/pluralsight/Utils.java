@@ -21,7 +21,10 @@ public class Utils {
         }
     }
 
-    /*
-    3. print results
-     */
+    //3. Print results
+    public static void printHeader(String title) {
+        System.out.println("\n" + BLUE + "==============================");
+        System.out.println("   " + title.toUpperCase());
+        System.out.println("==============================" + RESET);
+    }
 }
