@@ -11,8 +11,17 @@ public class Utils {
     public static final String BLUE = "\u001B[34m";
     public static final String YELLOW = "\u001B[33m";
 
+
+    //2. create a method for the color amount and use an if else statement to set the rule
+    public static String colorAmount(double amount) {
+        if (amount >= 0) {
+            return GREEN + String.format("%.2f", amount) + RESET;
+        } else {
+            return RED + String.format("%.2f", amount) + RESET;
+        }
+    }
+
     /*
-    2. create a method for the color amount and use an if else statement to set the rule
     3. print results
      */
 }
