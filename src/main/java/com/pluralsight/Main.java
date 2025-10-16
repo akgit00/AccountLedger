@@ -13,6 +13,12 @@ public class Main {
                 "\n==================================================");
         System.out.println("        💎 WELCOME TO THE LEDGER APP 💎");
         System.out.println("==================================================");
+        System.out.println(Utils.YELLOW +
+                "Track deposits, payments, and generate reports.");
+        System.out.println("Developed By: Ahmad Kourouma");
+        System.out.println("Current Time: " +
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy hh:mm a")));
+        System.out.println(Utils.RESET);
     }
 
     public static void main(String[] args) {
