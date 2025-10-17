@@ -140,7 +140,7 @@ readable for the user.
 
 ## Author
 
-**Developed by:** A.K. Kourouma  
+**Developed by:** Ahmad Kourouma  
 **Academy:** Year Up United  
 **Capstone Project:** Capstone 1 — Accounting Ledger Application  
 **GitHub:** [https://github.com/akgit00](https://github.com/akgit00)
